@@ -1,0 +1,57 @@
+// Example program
+#include <iostream>
+#include <string>
+using namespace std;
+class Car {           //создаем класс Car//
+    protected:
+    int height;
+    float speed;
+    private:
+    int lenght;
+    int weight;
+    public:
+    Car () {}   //конструуктор по умолчанию//
+    Car (int height, int lenght, int weight, float speed) {  //Создаем конструктор//
+        this->height=height;
+        this->lenght=lenght;
+        this->weight=weight;
+        this->speed=speed;
+        }
+    void setValues(int height, int lenght, int weight, float speed) {
+    this->height=height;
+    this->lenght=lenght;
+    this->weight=weight;
+    this->speed=speed;
+    print(); // при создании класса Car выводим параметры//
+    }
+    void print() {
+        cout  << " height:" << this-> height <<", length:"<< this->lenght <<", 
+        weight:" << this->weight <<", speed:" << this->speed << endl;
+    }
+    //деструктор//
+~Car() {
+    cout <<"ALL IS DONE!"<<endl;
+}
+}; 
+class Motorcycle: public Car {  //наследование//
+    public: void print() {
+        cout << height <<"-" << speed << endl;
+    }
+};
+        
+int main()
+{
+    Motorcycle bmw;  //наследование//
+    bmw.setValues (980, 1200, 86, 360.5);
+    //bmw.print();
+    
+    Car shkoda;
+    shkoda.setValues(1500, 3200, 1400, 234.4);  
+    //обращаемся к объекту шкода через "." и получаем все методы и поля из public и protected//
+    //shkoda.print();
+ 
+    Car audi;                            //создаем новую машину audi//
+    audi.setValues(1300, 2500, 1000, 304.5);   
+    //audi.print();
+    return 0;
+}
